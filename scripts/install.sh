@@ -9,11 +9,18 @@ PACKER_VERSION="0.10.2"
 && ssh-keygen -f /home/ubuntu/.ssh/mykey -N '' \
 && chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 
-# install packages
+# install docker
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
 apt-get update
-apt-get -y install docker.io ansible unzip
-# add docker privileges
-usermod -G docker ubuntu
+apt-get install -y docker-engine
+systemctl enable docker
+systemctl start docker
+usermod -aG docker ubuntu
+
+# install packages
+apt-get -y install ansible unzip jq
+
 # install pip
 pip install -U pip && pip3 install -U pip
 if [[ $? == 127 ]]; then
