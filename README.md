@@ -5,6 +5,7 @@ A vagrant project with an ubuntu box with the tools needed to do DevOps.
 # Tools included
 
 * Docker
+* Docker compose
 * Terraform
 * Packer
 * AWS CLI

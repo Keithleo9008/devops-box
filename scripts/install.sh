@@ -21,6 +21,10 @@ usermod -aG docker ubuntu
 # install packages
 apt-get -y install ansible unzip jq
 
+# Docker compose
+curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
 # install pip
 pip install -U pip && pip3 install -U pip
 if [[ $? == 127 ]]; then
@@ -28,6 +32,7 @@ if [[ $? == 127 ]]; then
     python get-pip.py
     python3 get-pip.py
 fi
+
 # install awscli and ebcli
 pip install -U awscli
 pip install -U awsebcli
