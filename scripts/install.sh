@@ -2,7 +2,7 @@
 set -x
 
 TERRAFORM_VERSION="0.9.5"
-PACKER_VERSION="0.10.2"
+PACKER_VERSION="1.1.0"
 # create new ssh key
 [[ ! -f /home/ubuntu/.ssh/mykey ]] \
 && mkdir -p /home/ubuntu/.ssh \
