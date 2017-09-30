@@ -19,7 +19,7 @@ systemctl start docker
 usermod -aG docker ubuntu
 
 # install packages
-apt-get -y install ansible unzip jq
+apt-get -y install ansible unzip jq make
 
 # Docker compose
 curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
