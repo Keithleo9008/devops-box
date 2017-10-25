@@ -25,13 +25,10 @@ apt-get -y install git unzip jq make
 curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-# install pip
-pip install -U pip && pip3 install -U pip
-if [[ $? == 127 ]]; then
-    wget -q https://bootstrap.pypa.io/get-pip.py
-    python get-pip.py
-    python3 get-pip.py
-fi
+# Python 3.
+apt-get install -y python3 python3-dev python3-pip
+pip3 install --upgrade pip
+pip3 install --upgrade virtualenv
 
 # install awscli and ebcli
 pip install -U awscli
