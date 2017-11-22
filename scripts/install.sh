@@ -21,6 +21,15 @@ usermod -aG docker ubuntu
 # install packages
 apt-get -y install git unzip jq make
 
+# Prevent clock skew when working with AWS.
+# https://stackoverflow.com/questions/4770635/
+#   s3-error-the-difference-between-the-request-time-and-the-current-time-is-too-la
+apt-get install -y ntp
+sed -i 's/pool 0.ubuntu/server 0.amazon/g' /etc/ntp.conf
+sed -i 's/pool 1.ubuntu/server 1.amazon/g' /etc/ntp.conf
+sed -i 's/pool 2.ubuntu/server 2.amazon/g' /etc/ntp.conf
+sed -i 's/pool 3.ubuntu/server 3.amazon/g' /etc/ntp.conf
+
 # Docker compose
 curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
